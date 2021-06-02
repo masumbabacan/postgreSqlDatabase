@@ -1,4 +1,5 @@
 # postgreSqlDatabase
 HRMS Project database (bütün bağlantı kodları içindedir olduğu gibi kullanılabilir.)
 
-![veriTabanı](https://user-images.githubusercontent.com/78920463/120373412-fe6f2a00-c320-11eb-84e4-dec4be78faa8.png)
+![veritabanıpng](https://user-images.githubusercontent.com/78920463/120497436-126d6700-c3c7-11eb-845d-4e3636c3a6ad.png)
+
