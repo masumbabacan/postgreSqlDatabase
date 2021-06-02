@@ -125,7 +125,7 @@ CREATE TABLE public.language_candidates
     PRIMARY KEY (id)
 );
 
-CREATE TABLE public.language_level
+CREATE TABLE public.language_levels
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     languages_level_name character varying(2) NOT NULL,
@@ -164,12 +164,19 @@ CREATE TABLE public.schools
     PRIMARY KEY (id)
 );
 
+CREATE TABLE public.social_media_link_types
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    link_type character varying(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE public.social_medias
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     candidate_id integer NOT NULL,
-    github_link character varying(500),
-    linkedin_link character varying(500),
+    link_type_id integer NOT NULL,
+    link character varying(1000) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -297,7 +304,7 @@ ALTER TABLE public.language_candidates
 
 ALTER TABLE public.language_candidates
     ADD FOREIGN KEY (language_level_id)
-    REFERENCES public.language_level (id)
+    REFERENCES public.language_levels (id)
     NOT VALID;
 
 
@@ -328,6 +335,12 @@ ALTER TABLE public.school_departments
 ALTER TABLE public.social_medias
     ADD FOREIGN KEY (candidate_id)
     REFERENCES public.candidates (id)
+    NOT VALID;
+
+
+ALTER TABLE public.social_medias
+    ADD FOREIGN KEY (link_type_id)
+    REFERENCES public.social_media_link_types (id)
     NOT VALID;
 
 
